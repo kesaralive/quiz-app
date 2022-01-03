@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
+import Navigation from "./components/Nav";
 
 function App() {
   return (
-    <div className="text-3xl">app is working</div>
+    <div className="font-Poppins">
+      <Navigation />
+    </div>
   );
 }
 
