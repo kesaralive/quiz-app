@@ -14,15 +14,19 @@ const QuestionCard: React.FC<Props> = ({
   questionNumber,
   totalQuestions,
 }) => (
-  <div>
+  <div className="flex-col justify-center items-center">
     <p className="number">
       Question: {questionNumber}/{totalQuestions}
     </p>
     <p dangerouslySetInnerHTML={{ __html: question }} />
     <div>
       {answers.map((answer) => (
-        <div>
-          <button disabled={userAnswer} onClick={callback}>
+        <div className="flex flex-col justify-center items-center">
+          <button
+            className="bg-blue-500 w-full text-white mb-2 py-2 px-6 rounded-md"
+            disabled={userAnswer}
+            onClick={callback}
+          >
             <span dangerouslySetInnerHTML={{ __html: answer }} />
           </button>
         </div>
