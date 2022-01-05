@@ -67,40 +67,43 @@ const App = () => {
     }
   };
   return (
-    <div className="App font-Poppins container flex flex-col justify-center">
-      <h1 className="text-3xl">Quiz Application</h1>
-      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button
-          className="start bg-green-500 py-2 px-6 rounded-md text-white"
-          onClick={startTrivia}
-        >
-          Start
-        </button>
-      ) : null}
+    <div className="App font-Poppins flex flex-col justify-center">
+      <Navigation />
+      <h1 className="text-3xl text-center pt-12 pb-6">Quiz Application</h1>
+      <div className="container flex-1 flex flex-col justify-center">
+        {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+          <button
+            className="start bg-green-500 py-2 px-6 rounded-md text-white"
+            onClick={startTrivia}
+          >
+            Start
+          </button>
+        ) : null}
 
-      {!gameOver ? <p className="score">Score:</p> : null}
-      {loading ? <p>Loading Questions...</p> : null}
-      {!loading && !gameOver && (
-        <QuestionCard
-          questionNumber={number + 1}
-          totalQuestions={TOTAL_QUESTIONS}
-          question={questions[number].question}
-          answers={questions[number].answers}
-          userAnswer={userAnswers ? userAnswers[number] : undefined}
-          callback={checkAnswer}
-        />
-      )}
-      {!gameOver &&
-      !loading &&
-      userAnswers.length === number + 1 &&
-      number !== TOTAL_QUESTIONS - 1 ? (
-        <button
-          className="next bg-amber-500 text-white py-2 w-full rounded-md"
-          onClick={nextQuestion}
-        >
-          Next Question
-        </button>
-      ) : null}
+        {!gameOver ? <p className="score">Score:</p> : null}
+        {loading ? <p>Loading Questions...</p> : null}
+        {!loading && !gameOver && (
+          <QuestionCard
+            questionNumber={number + 1}
+            totalQuestions={TOTAL_QUESTIONS}
+            question={questions[number].question}
+            answers={questions[number].answers}
+            userAnswer={userAnswers ? userAnswers[number] : undefined}
+            callback={checkAnswer}
+          />
+        )}
+        {!gameOver &&
+        !loading &&
+        userAnswers.length === number + 1 &&
+        number !== TOTAL_QUESTIONS - 1 ? (
+          <button
+            className="next bg-amber-500 text-white py-2 w-full rounded-md"
+            onClick={nextQuestion}
+          >
+            Next Question
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 };
