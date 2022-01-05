@@ -21,12 +21,15 @@ const QuestionCard: React.FC<Props> = ({
     <p className="number">
       Question: {questionNumber}/{totalQuestions}
     </p>
-    <p dangerouslySetInnerHTML={{ __html: question }} />
+    <p
+      className="text-2xl py-6"
+      dangerouslySetInnerHTML={{ __html: question }}
+    />
     <div>
       {answers.map((answer) => (
         <div key={answer} className="flex flex-col justify-center items-center">
           <button
-            className="bg-blue-500 w-full text-white mb-2 py-2 px-6 rounded-md"
+            className="btn-answer bg-blue-500 disabled:opacity-70 w-full hover:bg-blue-600 cursor-pointer shadow-md transition duration-30 text-white mb-2 py-2 px-6 rounded-md"
             disabled={!!userAnswer} // !! to convert to the type boolean
             value={answer}
             onClick={callback}
